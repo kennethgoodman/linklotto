@@ -1,5 +1,6 @@
 # save this as app.py
 from flask import Flask,render_template,request
+from backend.write import put_route
 from markupsafe import escape
 
 app = Flask(__name__)
@@ -14,6 +15,9 @@ def create_route():
         return f"The URL /data is accessed directly. Try going to '/form' to submit form"
     if request.method == 'POST':
         form_data = request.form
+        print(put_route(
+            {form_data['FirstURL']: .99, form_data['SecondURL': .01]}
+        ))
         print(form_data)
         return f"date saved"
 
