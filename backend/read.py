@@ -9,7 +9,7 @@ def get_route(link_route):
 	except ClientError as e:
 		print(e.response['Error']['Message'])
 	else:
-		return response['Item']
+		return response
 
 if __name__ == '__main__':
 	print(get_route('facebook'))
