@@ -1,7 +1,9 @@
 # save this as app.py
 from flask import Flask,render_template,request
 from backend.write import put_route
+from backend.read import get_route
 from markupsafe import escape
+import random
 
 app = Flask(__name__)
 
@@ -16,16 +18,15 @@ def create_route():
 	if request.method == 'POST':
 		form_data = request.form
 		print(put_route(
-			form_data['Name'],
-			{form_data['FirstURL']: .99, form_data['SecondURL']: .01}
+			escape(form_data['Name']),
+			{escape(form_data['FirstURL']): .99, escape(form_data['SecondURL']): .01}
 		))
 		print(form_data)
 		return f"date saved"
 
 
-@app.route("/route/<string:route>")
-def route(route):
-	print("route is", route)
-	if route == "abc":
-		return render_template('routing.html', route="https://www.facebook.com")
-	return 'hi'
+@app.route("/route/<string:link_route>")
+def route(link_route):
+	routes = get_route(link_route)
+	url = random.choices(routes['urls'], weights=routes['weights'], k=1)
+	return render_template('routing.html', route=url)
