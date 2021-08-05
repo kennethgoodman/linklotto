@@ -18,7 +18,7 @@ def put_route(link_route, urls_to_amounts):
 	table = dynamodb.Table('URLMapping')
 	response = table.put_item(
 		Item={
-			'link_route': 'facebook',
+			'link_route': link_route,
 			'urls': format_data_to_write(urls_to_amounts)
 		}
 	)
