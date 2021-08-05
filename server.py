@@ -19,10 +19,10 @@ def create_route():
 		form_data = request.form
 		print(put_route(
 			escape(form_data['Name']),
-			{escape(form_data['FirstURL']): .99, escape(form_data['SecondURL']): .01}
+			{escape(form_data['FirstURL']): .5, escape(form_data['SecondURL']): .5}
 		))
 		print(form_data)
-		return f"date saved"
+		return f"date saved, link is http://3.16.206.192:5000/route/{escape(form_data['Name'])}"
 
 
 @app.route("/route/<string:link_route>")
