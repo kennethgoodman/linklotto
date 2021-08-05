@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html>
-<body>
-
-<script>
-  location.href = '{{ route }}';
-</script>
-
-</body>
-</html> 
-
+<!doctype html>
+<title>Link Lotto</title>
+<section class="content">
+  <form action="create_route" method = "POST">
+      <p>Field1 <input type = "text" name = "First URL" /></p>
+      <p>Field2 <input type = "text" name = "Second URL" /></p>
+      <p><input type = "submit" value = "submit" /></p>
+  </form>
+</section>
