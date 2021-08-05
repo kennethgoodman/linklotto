@@ -20,7 +20,7 @@ def put_route(link_route, urls_to_amounts):
 	response = table.put_item(
 		Item={
 			'link_route': link_route,
-			'urls': list(urls_to_amounts.keys())
+			'urls': list(urls_to_amounts.keys()),
 			'weights': list(urls_to_amounts.values())
 		}
 	)
