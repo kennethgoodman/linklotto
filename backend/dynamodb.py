@@ -8,6 +8,7 @@ def get_aws_credentials():
 	return (aws_access_key_id, aws_secret_access_key)
 
 def get_dynamodb():
+	global dynamodb
 	if not dynamodb:
 		aws_access_key_id, aws_secret_access_key = get_aws_credentials
 		dynamodb = boto3.resource('dynamodb', 
