@@ -1,0 +1,6 @@
+linklotto.pem
+.env
+
+__pycache__
+*.pyc
+*/**/*.pyc
