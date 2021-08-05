@@ -16,7 +16,7 @@ def create_route():
 	if request.method == 'POST':
 		form_data = request.form
 		print(put_route(
-			'facebook',
+			form_data['Name'],
 			{form_data['FirstURL']: .99, form_data['SecondURL']: .01}
 		))
 		print(form_data)
