@@ -27,6 +27,7 @@ def create_route():
 
 @app.route("/route/<string:link_route>")
 def route(link_route):
+	print("link route is", link_route)
 	routes = get_route(link_route)
 	print(routes)
 	routes = routes['Item']
