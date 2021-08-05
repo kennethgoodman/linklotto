@@ -1,4 +1,4 @@
-
+import boto3
 dynamodb = None
 
 def get_aws_credentials():

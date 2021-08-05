@@ -1,5 +1,4 @@
 from pprint import pprint
-import boto3
 from decimal import Decimal
 from backend.dynamodb import get_dynamodb
 
