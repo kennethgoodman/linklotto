@@ -27,6 +27,8 @@ def create_route():
 
 @app.route("/route/<string:link_route>")
 def route(link_route):
-	routes = get_route(link_route)['Item']
+	routes = get_route(link_route)
+	print(routes)
+	routes = routes['Item']
 	url = random.choices(routes['urls'], weights=list(map(lambda x: float(x), routes['weights'])), k=1)[0]
 	return render_template('routing.html', route=url)
