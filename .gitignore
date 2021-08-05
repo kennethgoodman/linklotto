@@ -1,5 +1,6 @@
 linklotto.pem
 .env
+.DS_STORE
 
 __pycache__
 *.pyc
