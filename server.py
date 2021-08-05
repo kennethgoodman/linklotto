@@ -15,10 +15,11 @@ def index():
 @app.route('/create_route/', methods = ['POST'])
 def create_route():
 	def convert_to_url(url):
-		non_http_portion = "[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)"
-		http_www_portion = "http(s)?:\/\/(www\.)?"
+		# TODO convert to re
+		# non_http_portion = "[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)"
+		# http_www_portion = "http(s)?:\\/\\/(www\\.)?"
 		# if has http or https TODO: combine these
-		if re.search(http_www_portion + non_http_portion, url):
+		if 'http' in url or 'https' in url:
 			return url
 		return "http://" + url
 
