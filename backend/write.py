@@ -9,7 +9,7 @@ def format_data_to_write(urls_to_amounts):
 	for url, decimal in urls_to_amounts.items():
 		rtn.append([url, Decimal(str(decimal))])
 		s += decimal
-	assert abs(decimal - 1) < .00001, "must be close to 1"
+	assert abs(s - 1) < .00001, f'must be close to 1 is actually {s}'
 	return rtn
 
 
