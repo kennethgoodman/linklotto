@@ -1,18 +1,26 @@
 # save this as app.py
-from flask import Flask
-from flask import render_template
+from flask import Flask,render_template,request
 from markupsafe import escape
 
 app = Flask(__name__)
 
 @app.route("/")
 def index():
-	return render_template('index.html', route='https://www.google.com')
+	return render_template('index.html')
+
+@app.route('/create_route/', methods = ['POST'])
+def create_route():
+    if request.method == 'GET':
+        return f"The URL /data is accessed directly. Try going to '/form' to submit form"
+    if request.method == 'POST':
+        form_data = request.form
+        print(form_data)
+        return f"date saved"
 
 
 @app.route("/route/<string:route>")
 def route(route):
 	print("route is", route)
 	if route == "abc":
-		return render_template('index.html', route="https://www.facebook.com")
+		return render_template('routing.html', route="https://www.facebook.com")
 	return 'hi'
