@@ -11,15 +11,16 @@ def index():
 
 @app.route('/create_route/', methods = ['POST'])
 def create_route():
-    if request.method == 'GET':
-        return f"The URL /data is accessed directly. Try going to '/form' to submit form"
-    if request.method == 'POST':
-        form_data = request.form
-        print(put_route(
-            {form_data['FirstURL']: .99, form_data['SecondURL': .01]}
-        ))
-        print(form_data)
-        return f"date saved"
+	if request.method == 'GET':
+		return f"The URL /data is accessed directly. Try going to '/form' to submit form"
+	if request.method == 'POST':
+		form_data = request.form
+		print(put_route(
+			'facebook',
+			{form_data['FirstURL']: .99, form_data['SecondURL']: .01}
+		))
+		print(form_data)
+		return f"date saved"
 
 
 @app.route("/route/<string:route>")
