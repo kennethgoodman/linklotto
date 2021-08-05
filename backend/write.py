@@ -21,7 +21,7 @@ def put_route(link_route, urls_to_amounts):
 		Item={
 			'link_route': link_route,
 			'urls': list(urls_to_amounts.keys()),
-			'weights': list(map(lambda x: Decimal(x), urls_to_amounts.values()))
+			'weights': list(map(lambda x: Decimal(str(x)), urls_to_amounts.values()))
 		}
 	)
 	return response
