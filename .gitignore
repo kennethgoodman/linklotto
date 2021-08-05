@@ -1,5 +1,6 @@
 linklotto.pem
 .DS_STORE
+aws.credentials.csv
 
 __pycache__
 *.pyc
