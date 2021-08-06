@@ -37,7 +37,9 @@ def create_route():
 	except ValueError as ve:
 		# already exists, todo switch to custom exception
 		return f"link route {escape(form_data['Name'])} already exists, go back and try again."
-	return f"date saved, link is http://3.16.206.192:5000/route/{escape(form_data['Name'])}"
+	except AssertionError as ae:
+		return f"percents don't add up to 100"
+	return f"date saved, link is http://3.16.206.192:5000/route/{link_route}"
 
 
 @app.route("/route/<string:link_route>")
