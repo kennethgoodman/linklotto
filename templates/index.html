@@ -1,17 +1,22 @@
 <!doctype html>
 <title>Link Lotto</title>
 <section class="content">
+  <h1> Link Lotto </h1>
+  <h3> Welcome! Choose a title and fill in the links (currently prefilled with google and rickroll). </h3>
+  <h3> Once you submit, we will create a link to send to your friends (both internet and irl) and we will forward 
+  		them randomly (at the probabilities you assign) to the links you provide.
+  </h3>
   <form action="create_route" method = "POST">
-  	  <p>Link Title <input type = "text" name = "Name" /></p>
+  	  <p>Link Title <input type="text" name="Name" required/></p>
       <p>
       	URL1 
-      	<input type="text" name="FirstURL" value="google.com"/> 
-      	<input type="number" name="FirstURLPercent" min="1" max="99" value="50" id="FirstURLPercent" onchange="onChange1()">
+      	<input type="text" name="FirstURL" value="google.com" required/> 
+      	<input type="number" name="FirstURLPercent" min="1" max="99" value="50" id="FirstURLPercent" onchange="onChange1()" required>
       </p>
       <p> 
       	URL2 
-      	<input type="text" name="SecondURL" value="https://www.youtube.com/watch?v=m1yWUWhamj4"/>
-      	<input type="number" name="SecondURLPercent" min="1" max="99" value="50" id="SecondURLPercent" onchange="onChange2()">
+      	<input type="text" name="SecondURL" value="https://www.youtube.com/watch?v=m1yWUWhamj4" required/>
+      	<input type="number" name="SecondURLPercent" min="1" max="99" value="50" id="SecondURLPercent" onchange="onChange2()" required>
       </p>
       <p><input type = "submit" value = "submit" /></p>
   </form>
