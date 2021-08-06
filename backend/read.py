@@ -1,4 +1,5 @@
 from backend.dynamodb import get_dynamodb
+import boto
 
 
 def _get_if_exist(link_route, table):
@@ -18,8 +19,8 @@ def get_route(link_route):
 	dynamodb = get_dynamodb()
 	table = dynamodb.Table('URLMapping')
 	try:
-		response = _get_if_exist()
-	except ClientError as e:
+		response = _get_if_exist(link_route, table)
+	except boto.dynamodb.exceptions.ClientError as e:
 		print(e.response['Error']['Message'])
 	else:
 		return response
