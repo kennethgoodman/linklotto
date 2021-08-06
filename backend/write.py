@@ -1,4 +1,3 @@
-from pprint import pprint
 from decimal import Decimal
 from backend.dynamodb import get_dynamodb
 from botocore.exceptions import ClientError
@@ -20,7 +19,7 @@ def put_route(link_route, urls_to_amounts, title):
 	except ClientError as ce:
 		if ce.response['Error']['Code']=='ConditionalCheckFailedException': 
 			# TODO: check if anybody has retrieved in more than 100 days, if no overwrite
-			return ValueError("does exist already") # TODO convert to custom exception
+			raise ValueError("does exist already") # TODO convert to custom exception
 		raise ce
 	return response
 
