@@ -3,8 +3,16 @@
 <section class="content">
   <form action="create_route" method = "POST">
   	  <p>Mapping Name <input type = "text" name = "Name" /></p>
-      <p>URL1 <input type = "text" name = "FirstURL" /></p>
-      <p>URL2 <input type = "text" name = "SecondURL" /></p>
+      <p>
+      	URL1 
+      	<input type="text" name="FirstURL" /> 
+      	<input type="number" name="FirstURLPercent" min="1" max="99">
+      </p>
+      <p> 
+      	URL2 
+      	<input type="text" name="SecondURL" />
+      	<input type="number" name="SecondURLPercent" min="1" max="99">
+      </p>
       <p><input type = "submit" value = "submit" /></p>
   </form>
 </section>

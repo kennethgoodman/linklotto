@@ -16,31 +16,29 @@ def index():
 def create_route():
 	def convert_to_url(url):
 		# TODO convert to re
-		# non_http_portion = "[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)"
-		# http_www_portion = "http(s)?:\\/\\/(www\\.)?"
-		# if has http or https TODO: combine these
 		if 'http' in url or 'https' in url:
 			return url
 		return "http://" + url
 
-
-	if request.method == 'GET':
-		return f"The URL /data is accessed directly. Try going to '/form' to submit form"
-	if request.method == 'POST':
-		form_data = request.form
-		print(put_route(
-			escape(form_data['Name']),
-			{convert_to_url(escape(form_data['FirstURL'])): .5, convert_to_url(escape(form_data['SecondURL'])): .5}
-		))
-		print(form_data)
-		return f"date saved, link is http://3.16.206.192:5000/route/{escape(form_data['Name'])}"
+	if request.method != 'POST':
+		return f"Use a POST, you're doing it wrong, you'll get it next time"
+	form_data = request.form
+	title = escape(form_data['Name'])
+	link_route = ''.join(title.split(" ")) # remove spaces for link
+	put_route(
+		link_route,
+		{
+		 convert_to_url(escape(form_data['FirstURL'])): form_data['FirstURLPercent'] / 100.0, 
+		 convert_to_url(escape(form_data['SecondURL'])): form_data['SecondURLPercent'] / 100.0
+		},
+		title
+	)
+	return f"date saved, link is http://3.16.206.192:5000/route/{escape(form_data['Name'])}"
 
 
 @app.route("/route/<string:link_route>")
 def route(link_route):
-	print("link route is", link_route)
 	routes = get_route(link_route)
-	print(routes)
 	routes = routes['Item']
 	url = random.choices(routes['urls'], weights=list(map(lambda x: float(x), routes['weights'])), k=1)[0]
-	return render_template('routing.html', route=url)
+	return render_template('routing.html', route=url, title=routes.get('title', link_route))
