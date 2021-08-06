@@ -28,8 +28,8 @@ def create_route():
 	put_route(
 		link_route,
 		{
-		 convert_to_url(escape(form_data['FirstURL'])): form_data['FirstURLPercent'] / 100.0, 
-		 convert_to_url(escape(form_data['SecondURL'])): form_data['SecondURLPercent'] / 100.0
+		 convert_to_url(escape(form_data['FirstURL'])): int(form_data['FirstURLPercent']) / 100.0, 
+		 convert_to_url(escape(form_data['SecondURL'])): int(form_data['SecondURLPercent']) / 100.0
 		},
 		title
 	)
