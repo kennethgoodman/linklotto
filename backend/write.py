@@ -15,7 +15,7 @@ def put_route(link_route, urls_to_amounts, title):
 				'urls': list(urls_to_amounts.keys()),
 				'weights': list(map(lambda x: Decimal(str(x)), urls_to_amounts.values()))
 			},
-			ConditionExpression='attribute_not_exists' # must not exist
+			ConditionExpression='attribute_not_exists(link_route)' # must not exist
 		)
 	except ClientError as ce:
 		if ce.response['Error']['Code']=='ConditionalCheckFailedException': 
