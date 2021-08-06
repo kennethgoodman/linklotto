@@ -18,7 +18,7 @@ def put_route(link_route, urls_to_amounts, title):
 			ConditionExpression='attribute_not_exists' # must not exist
 		)
 	except ClientError as ce:
-		if e.response['Error']['Code']=='ConditionalCheckFailedException': 
+		if ce.response['Error']['Code']=='ConditionalCheckFailedException': 
 			# TODO: check if anybody has retrieved in more than 100 days, if no overwrite
 			return ValueError("does exist already") # TODO convert to custom exception
 		raise ce
